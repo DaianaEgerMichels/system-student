@@ -6,8 +6,10 @@ import { Container, Paper } from "@mui/material";
 import Button from '@mui/material/Button';
 import PersonAddAlt from "@mui/icons-material/PersonAddAlt";
 import Swal from 'sweetalert2';
+import { useNavigate} from 'react-router-dom';
 
 export default function Student() {
+    const navigate = useNavigate();
 
     const paperStyle= {
         padding: '50px 20px', width: 600, margin: '20px auto'
@@ -19,7 +21,7 @@ export default function Student() {
         e.preventDefault();
 
         const student = {name,address}
-        
+
         fetch('http://localhost:8080/student/add', {
             method: 'POST',
             headers: {'Content-Type':'application/json'},
@@ -32,7 +34,13 @@ export default function Student() {
                 showConfirmButton: false,
                 timer: 1500
               })
+              navigate('/students');
         })
+        .catch(() => {
+            alert(
+              'An error occurred while registering the student! Contact your system administrator.'
+            );
+          });
     }
 
   return (
