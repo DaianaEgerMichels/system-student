@@ -2,7 +2,6 @@ package com.github.daianaegermichels.systemstudent.controller;
 
 import com.github.daianaegermichels.systemstudent.model.Student;
 import com.github.daianaegermichels.systemstudent.service.StudentService;
-import org.apache.catalina.filters.ExpiresFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/student")
+@CrossOrigin
 public class StudentController {
 
     @Autowired
